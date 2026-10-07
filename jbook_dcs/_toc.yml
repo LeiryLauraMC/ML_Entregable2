@@ -1,0 +1,8 @@
+format: jb-book
+root: intro
+chapters:
+  - file: 01_contexto
+  - file: 02_eda
+  - file: 03_modelos
+  - file: conclusiones
+  - file: referencias

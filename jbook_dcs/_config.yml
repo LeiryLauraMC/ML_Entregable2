@@ -1,0 +1,25 @@
+title: "Dificultad cognitiva subjetiva y factores de riesgo modificables de demencia"
+author: "Santiago Díaz, Gina Huguet y Leiry Mares, Maestría en Ingeniería Biomédica, Universidad del Norte"
+copyright: "2026"
+logo: ""
+only_build_toc_files: true
+
+execute:
+  # Los capítulos se entregan ya ejecutados (con sus gráficas). Para volver a ejecutarlos
+  # al compilar cambie 'off' por 'force' (requiere kaleido y un navegador Chrome/Chromium).
+  execute_notebooks: "off"
+  timeout: 1800
+
+sphinx:
+  config:
+    language: es
+    html_show_copyright: false
+
+html:
+  use_repository_button: false
+  home_page_in_navbar: true
+
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - colon_fence

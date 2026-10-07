@@ -1,0 +1,1758 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Análisis exploratorio de datos &#8212; Dificultad cognitiva subjetiva y factores de riesgo modificables de demencia</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_eda';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="3. Modelos base" href="03_modelos.html" />
+    <link rel="prev" title="1. Contexto del problema" href="01_contexto.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dificultad cognitiva subjetiva y factores de riesgo modificables de demencia</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Dificultad cognitiva subjetiva y factores de riesgo modificables de demencia
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_contexto.html">1. Contexto del problema</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Análisis exploratorio de datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_modelos.html">3. Modelos base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusiones.html">Conclusiones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencias.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02_eda.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Análisis exploratorio de datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-objetivo">2.1 Variable objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edad">2.2 Edad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factores-de-riesgo">2.3 Factores de riesgo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-acv-como-exposicion-de-interes">2.4 El ACV como exposición de interés</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaciones-entre-variables-y-estructura-de-los-datos">2.5 Relaciones entre variables y estructura de los datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calidad-de-los-datos-y-auditoria-de-fuga">2.6 Calidad de los datos y auditoría de fuga</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detalles-que-el-dashboard-no-muestra">2.7 Detalles que el dashboard no muestra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-estadisticas-detras-de-las-graficas">Pruebas estadísticas detrás de las gráficas</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-exploratorio-de-datos">
+<h1>2. Análisis exploratorio de datos<a class="headerlink" href="#analisis-exploratorio-de-datos" title="Link to this heading">#</a></h1>
+<p>La segunda pestaña del dashboard es un análisis exploratorio con filtros. Todo el análisis usa únicamente el
+conjunto de entrenamiento, 44.903 adultos, y se recalcula cada vez que se cambia algún filtro del panel
+lateral (año, sexo, edad, raza o etnia y antecedente de ACV). En este capítulo las gráficas aparecen con los filtros en su
+valor inicial. Cuando una lectura cambia mucho al filtrar, damos el ejemplo.</p>
+<p>Una advertencia que se repite en varias secciones: con más de 40.000 adultos casi cualquier diferencia
+resulta estadísticamente significativa. Por eso el análisis se apoya en tamaños de efecto (V de Cramér,
+razones de odds, diferencias de prevalencia con su intervalo) y no en los valores p.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">informe</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">DF</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">OBJETIVO</span><span class="p">]</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">kpis_eda</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Adultos: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'n'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> | casos: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'casos'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> | prevalencia: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'prev'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> (IC 95 %: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'lo'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'hi'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Edad mediana: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'edad'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> | mujeres: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'mujeres'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> | 65 años o más: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">'mayores'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adultos: 44,903 | casos: 9,253 | prevalencia: 20.61% (IC 95 %: 20.24%-20.98%)
+Edad mediana: 54 | mujeres: 54.5% | 65 años o más: 31.8%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las tarjetas que encabezan la pestaña resumen la población que queda con los filtros: cuántos adultos
+hay, cuántos reportan dificultad, la prevalencia con su intervalo de confianza de Wilson, la edad mediana
+y la proporción de mujeres. Sin filtros son 44.903 adultos, 9.253 con dificultad (20,6 %, IC 95 %: 20,2 %-21,0 %),
+mediana de 54 años y un 54 % de mujeres. Con los filtros se aprecia lo rápido que cambia el panorama:
+al elegir solo hombres con antecedente de ACV quedan 678 adultos, la mediana de edad sube a 70 años y la
+prevalencia llega al 42,8 % (IC 95 %: 39,1 %-46,5 %). El intervalo se ensancha porque la muestra es mucho más pequeña,
+y esa es la razón por la que el dashboard dibuja siempre las barras de error.</p>
+<section id="variable-objetivo">
+<h2>2.1 Variable objetivo<a class="headerlink" href="#variable-objetivo" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_niveles</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"nivel_dificultad_cognitiva"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/48181fabcb5ce1dec68f4ac27b557c0bf28840a511056a8a1a8f88e53e0ec6ca.png" src="_images/48181fabcb5ce1dec68f4ac27b557c0bf28840a511056a8a1a8f88e53e0ec6ca.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nivel_dificultad_cognitiva
+Ninguna     35650
+Alguna       8236
+Mucha        1002
+No puede       15
+</pre></div>
+</div>
+</div>
+</div>
+<p>La pregunta original de la NHIS tiene cuatro niveles: ninguna dificultad, alguna, mucha o no puede. Casi
+todos los casos están en el segundo nivel. El 79,4 % de los adultos no reporta dificultad, el 18,3 % reporta alguna,
+el 2,2 % mucha y apenas 15 personas, el 0,03 %, dicen que no pueden recordar o concentrarse. Con tan
+pocos casos en los niveles altos, modelarlos por separado no sería viable, y por eso los reunimos en una variable binaria: 0 si
+no hay dificultad y 1 si hay alguna, mucha o no puede. La dona de la derecha muestra el resultado, 20,6 % de
+positivos frente a 79,4 % de negativos, es decir, un desbalance de 3,85 a 1.</p>
+<p>Ese desbalance no es extremo pero tiene consecuencias prácticas. Un modelo que siempre responda «sin
+dificultad» acertaría el 79,4 % de las veces y no detectaría ningún caso, de modo que el accuracy
+no sirve para juzgar los modelos. De ahí que usemos la PR-AUC como métrica principal y que las particiones
+sean estratificadas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_trimestre</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">periodo</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">"anio"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-T"</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">"trimestre"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="n">ct_anio</span><span class="p">,</span> <span class="n">ct_trim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"anio"</span><span class="p">],</span> <span class="n">y</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">"periodo"</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"año"</span><span class="p">,</span> <span class="n">ct_anio</span><span class="p">),</span> <span class="p">(</span><span class="s2">"trimestre (8 periodos)"</span><span class="p">,</span> <span class="n">ct_trim</span><span class="p">)]:</span>
+    <span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">dcs.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">cramers_v</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">: chi2 = </span><span class="si">{</span><span class="n">chi2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, p = </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, V de Cramér = </span><span class="si">{</span><span class="n">cramers_v</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a8f9e0990c39c2c4fb4b60ea0b1cbcbb5b3fcf94017d6c154eda48ec58aa45f4.png" src="_images/a8f9e0990c39c2c4fb4b60ea0b1cbcbb5b3fcf94017d6c154eda48ec58aa45f4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>año: chi2 = 0.86, p = 0.354, V de Cramér = 0.000
+trimestre (8 periodos): chi2 = 16.21, p = 0.023, V de Cramér = 0.014
+</pre></div>
+</div>
+</div>
+</div>
+<p>La segunda gráfica pregunta si el fenómeno cambia con el tiempo. La prevalencia es del 20,4 % en 2022 y del
+20,8 % en 2023, una diferencia sin significación (p = 0,35). Por trimestres hay variaciones que van del 19,6 % en el primer
+trimestre de 2022 al 21,8 % en el último de 2023. La prueba chi-cuadrado sí da un valor p
+pequeño (0,023), pero el tamaño del efecto es despreciable (V de Cramér = 0,014) y los intervalos de
+confianza se solapan con la línea de la prevalencia global casi en todos los periodos; no hay una
+tendencia sino una oscilación dentro del ruido esperado. La conclusión práctica es que podemos
+combinar los dos años y que no hace falta una validación cronológica. El filtro de año del dashboard permite
+comprobarlo: al dejar solo 2022 o solo 2023 las demás gráficas cambian muy poco.</p>
+</section>
+<section id="edad">
+<h2>2.2 Edad<a class="headerlink" href="#edad" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_hist_edad</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">"conteo"</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_hist_edad</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">"densidad"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Adultos con edad truncada en 85:"</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">85</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1a3b4ed2d04bd0fdf8e2f3f809b176236e0f4de980d87596c10e2b6e8a5cd1d6.png" src="_images/1a3b4ed2d04bd0fdf8e2f3f809b176236e0f4de980d87596c10e2b6e8a5cd1d6.png" />
+<img alt="_images/75ad1f2ccb9ca5dc97c54f2f5b92b1507e23d60dfb7aba846ef2500a27861157.png" src="_images/75ad1f2ccb9ca5dc97c54f2f5b92b1507e23d60dfb7aba846ef2500a27861157.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    44797.00
+mean        52.86
+std         18.40
+min         18.00
+25%         37.00
+50%         54.00
+75%         68.00
+max         85.00
+Adultos con edad truncada en 85: 1525
+</pre></div>
+</div>
+</div>
+</div>
+<p>El histograma apilado muestra cuántos adultos hay en cada edad y, dentro de cada barra, cuántos reportan
+dificultad. La edad media es 52,9 años (mediana 54), con una distribución casi plana entre los 25 y los 80
+años. El pico del extremo derecho es un artefacto: el CDC trunca la edad en 85 años para proteger la
+confidencialidad, así que ese valor significa en realidad «85 o más» y reúne a 1.525 adultos (3,4 %).</p>
+<p>La vista de densidad por clase, que se activa con el selector de la parte superior, permite comparar la forma de las dos
+distribuciones sin que influya el tamaño de cada grupo. Los adultos con dificultad (rojo) acumulan más peso en las
+edades altas, pero también hay una pequeña elevación en los 20 años: la edad no se comporta de forma
+simple, y la siguiente gráfica lo muestra con claridad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_prev_edad</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_prev_edad</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">"sexo"</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_prev_edad</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"depresion_dx"</span><span class="p">]),</span> <span class="s2">"depresion_dx"</span><span class="p">))</span>
+<span class="n">tabla</span> <span class="o">=</span> <span class="n">prevalencia_por</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">"grupo_edad_q"</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">GRUPO_EDAD_LBL</span><span class="p">)[[</span><span class="s2">"grupo_edad_q"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">,</span> <span class="s2">"prevalencia"</span><span class="p">,</span> <span class="s2">"ic_inf"</span><span class="p">,</span> <span class="s2">"ic_sup"</span><span class="p">]]</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">tabla</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"grupo_edad_q"</span><span class="p">:</span> <span class="s2">"grupo de edad"</span><span class="p">,</span> <span class="s2">"ic_inf"</span><span class="p">:</span> <span class="s2">"IC inf."</span><span class="p">,</span> <span class="s2">"ic_sup"</span><span class="p">:</span> <span class="s2">"IC sup."</span><span class="p">}),</span>
+    <span class="p">{</span><span class="s2">"n"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:,.0f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"prevalencia"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"IC inf."</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"IC sup."</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f18f2b77fbe6472fabdb2263783f540d722bcac0f79ac469b08cd307a9e551b5.png" src="_images/f18f2b77fbe6472fabdb2263783f540d722bcac0f79ac469b08cd307a9e551b5.png" />
+<img alt="_images/2afe20edda3816721b670f177591bc34fbd3ffed603e12a0b0d9c02d38f1e241.png" src="_images/2afe20edda3816721b670f177591bc34fbd3ffed603e12a0b0d9c02d38f1e241.png" />
+<img alt="_images/79aad63b056cf2e2017172354621f68873cfe73343969d319ee7277e1319ab48.png" src="_images/79aad63b056cf2e2017172354621f68873cfe73343969d319ee7277e1319ab48.png" />
+<div class="output text_html"><style type="text/css">
+#T_9adb8_row0_col0, #T_9adb8_row0_col1, #T_9adb8_row0_col2, #T_9adb8_row0_col3, #T_9adb8_row0_col4, #T_9adb8_row1_col0, #T_9adb8_row1_col1, #T_9adb8_row1_col2, #T_9adb8_row1_col3, #T_9adb8_row1_col4, #T_9adb8_row2_col0, #T_9adb8_row2_col1, #T_9adb8_row2_col2, #T_9adb8_row2_col3, #T_9adb8_row2_col4, #T_9adb8_row3_col0, #T_9adb8_row3_col1, #T_9adb8_row3_col2, #T_9adb8_row3_col3, #T_9adb8_row3_col4, #T_9adb8_row4_col0, #T_9adb8_row4_col1, #T_9adb8_row4_col2, #T_9adb8_row4_col3, #T_9adb8_row4_col4, #T_9adb8_row5_col0, #T_9adb8_row5_col1, #T_9adb8_row5_col2, #T_9adb8_row5_col3, #T_9adb8_row5_col4, #T_9adb8_row6_col0, #T_9adb8_row6_col1, #T_9adb8_row6_col2, #T_9adb8_row6_col3, #T_9adb8_row6_col4, #T_9adb8_row7_col0, #T_9adb8_row7_col1, #T_9adb8_row7_col2, #T_9adb8_row7_col3, #T_9adb8_row7_col4, #T_9adb8_row8_col0, #T_9adb8_row8_col1, #T_9adb8_row8_col2, #T_9adb8_row8_col3, #T_9adb8_row8_col4, #T_9adb8_row9_col0, #T_9adb8_row9_col1, #T_9adb8_row9_col2, #T_9adb8_row9_col3, #T_9adb8_row9_col4, #T_9adb8_row10_col0, #T_9adb8_row10_col1, #T_9adb8_row10_col2, #T_9adb8_row10_col3, #T_9adb8_row10_col4, #T_9adb8_row11_col0, #T_9adb8_row11_col1, #T_9adb8_row11_col2, #T_9adb8_row11_col3, #T_9adb8_row11_col4, #T_9adb8_row12_col0, #T_9adb8_row12_col1, #T_9adb8_row12_col2, #T_9adb8_row12_col3, #T_9adb8_row12_col4 {
+  text-align: left;
+}
+</style>
+<table id="T_9adb8">
+  <thead>
+    <tr>
+      <th id="T_9adb8_level0_col0" class="col_heading level0 col0" >grupo de edad</th>
+      <th id="T_9adb8_level0_col1" class="col_heading level0 col1" >n</th>
+      <th id="T_9adb8_level0_col2" class="col_heading level0 col2" >prevalencia</th>
+      <th id="T_9adb8_level0_col3" class="col_heading level0 col3" >IC inf.</th>
+      <th id="T_9adb8_level0_col4" class="col_heading level0 col4" >IC sup.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_9adb8_row0_col0" class="data row0 col0" >18-24</td>
+      <td id="T_9adb8_row0_col1" class="data row0 col1" >2,824</td>
+      <td id="T_9adb8_row0_col2" class="data row0 col2" >21.0%</td>
+      <td id="T_9adb8_row0_col3" class="data row0 col3" >19.6%</td>
+      <td id="T_9adb8_row0_col4" class="data row0 col4" >22.6%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row1_col0" class="data row1 col0" >25-29</td>
+      <td id="T_9adb8_row1_col1" class="data row1 col1" >2,982</td>
+      <td id="T_9adb8_row1_col2" class="data row1 col2" >18.1%</td>
+      <td id="T_9adb8_row1_col3" class="data row1 col3" >16.8%</td>
+      <td id="T_9adb8_row1_col4" class="data row1 col4" >19.5%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row2_col0" class="data row2 col0" >30-34</td>
+      <td id="T_9adb8_row2_col1" class="data row2 col1" >3,590</td>
+      <td id="T_9adb8_row2_col2" class="data row2 col2" >16.2%</td>
+      <td id="T_9adb8_row2_col3" class="data row2 col3" >15.0%</td>
+      <td id="T_9adb8_row2_col4" class="data row2 col4" >17.5%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row3_col0" class="data row3 col0" >35-39</td>
+      <td id="T_9adb8_row3_col1" class="data row3 col1" >3,585</td>
+      <td id="T_9adb8_row3_col2" class="data row3 col2" >14.3%</td>
+      <td id="T_9adb8_row3_col3" class="data row3 col3" >13.2%</td>
+      <td id="T_9adb8_row3_col4" class="data row3 col4" >15.5%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row4_col0" class="data row4 col0" >40-44</td>
+      <td id="T_9adb8_row4_col1" class="data row4 col1" >3,392</td>
+      <td id="T_9adb8_row4_col2" class="data row4 col2" >14.7%</td>
+      <td id="T_9adb8_row4_col3" class="data row4 col3" >13.5%</td>
+      <td id="T_9adb8_row4_col4" class="data row4 col4" >15.9%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row5_col0" class="data row5 col0" >45-49</td>
+      <td id="T_9adb8_row5_col1" class="data row5 col1" >3,042</td>
+      <td id="T_9adb8_row5_col2" class="data row5 col2" >14.4%</td>
+      <td id="T_9adb8_row5_col3" class="data row5 col3" >13.2%</td>
+      <td id="T_9adb8_row5_col4" class="data row5 col4" >15.7%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row6_col0" class="data row6 col0" >50-54</td>
+      <td id="T_9adb8_row6_col1" class="data row6 col1" >3,231</td>
+      <td id="T_9adb8_row6_col2" class="data row6 col2" >17.0%</td>
+      <td id="T_9adb8_row6_col3" class="data row6 col3" >15.8%</td>
+      <td id="T_9adb8_row6_col4" class="data row6 col4" >18.4%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row7_col0" class="data row7 col0" >55-59</td>
+      <td id="T_9adb8_row7_col1" class="data row7 col1" >3,668</td>
+      <td id="T_9adb8_row7_col2" class="data row7 col2" >18.7%</td>
+      <td id="T_9adb8_row7_col3" class="data row7 col3" >17.4%</td>
+      <td id="T_9adb8_row7_col4" class="data row7 col4" >20.0%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row8_col0" class="data row8 col0" >60-64</td>
+      <td id="T_9adb8_row8_col1" class="data row8 col1" >4,207</td>
+      <td id="T_9adb8_row8_col2" class="data row8 col2" >19.6%</td>
+      <td id="T_9adb8_row8_col3" class="data row8 col3" >18.5%</td>
+      <td id="T_9adb8_row8_col4" class="data row8 col4" >20.9%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row9_col0" class="data row9 col0" >65-69</td>
+      <td id="T_9adb8_row9_col1" class="data row9 col1" >4,342</td>
+      <td id="T_9adb8_row9_col2" class="data row9 col2" >20.5%</td>
+      <td id="T_9adb8_row9_col3" class="data row9 col3" >19.3%</td>
+      <td id="T_9adb8_row9_col4" class="data row9 col4" >21.7%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row10_col0" class="data row10 col0" >70-74</td>
+      <td id="T_9adb8_row10_col1" class="data row10 col1" >3,927</td>
+      <td id="T_9adb8_row10_col2" class="data row10 col2" >25.3%</td>
+      <td id="T_9adb8_row10_col3" class="data row10 col3" >24.0%</td>
+      <td id="T_9adb8_row10_col4" class="data row10 col4" >26.7%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row11_col0" class="data row11 col0" >75-79</td>
+      <td id="T_9adb8_row11_col1" class="data row11 col1" >2,738</td>
+      <td id="T_9adb8_row11_col2" class="data row11 col2" >31.2%</td>
+      <td id="T_9adb8_row11_col3" class="data row11 col3" >29.5%</td>
+      <td id="T_9adb8_row11_col4" class="data row11 col4" >33.0%</td>
+    </tr>
+    <tr>
+      <td id="T_9adb8_row12_col0" class="data row12 col0" >80-85</td>
+      <td id="T_9adb8_row12_col1" class="data row12 col1" >3,269</td>
+      <td id="T_9adb8_row12_col2" class="data row12 col2" >39.1%</td>
+      <td id="T_9adb8_row12_col3" class="data row12 col3" >37.5%</td>
+      <td id="T_9adb8_row12_col4" class="data row12 col4" >40.8%</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Esta es probablemente la gráfica más importante de la pestaña. La prevalencia no crece con la edad en línea
+recta, sino que tiene forma de U: es del 21,0 % entre los 18 y los 24 años, baja hasta un mínimo cercano
+al 14 % entre los 35 y los 49, y desde ahí sube de manera sostenida hasta el 39,1 % en los adultos de 80 a 85. La
+dificultad de los adultos jóvenes probablemente obedece a razones distintas del envejecimiento cerebral, como la atención, el
+sueño o la ansiedad, mientras que la de los mayores se asocia más con el deterioro propio de la edad. Un
+término lineal de edad no puede representar una U, y por eso el modelo usa splines cúbicos.</p>
+<p>El selector «Desagregar» muestra que la forma se mantiene entre subgrupos. Por sexo, las mujeres
+tienen una prevalencia más alta en casi todas las edades (22,4 % frente a 18,4 % en total), aunque la diferencia se
+vuelve pequeña después de los 70. Al separar por diagnóstico de depresión, las dos curvas son
+paralelas y la de quienes tienen depresión queda muy por encima: la depresión añade riesgo en todas las edades.
+Además, el efecto es más visible en los jóvenes y los adultos de mediana edad, donde la distancia entre las curvas es
+mayor.</p>
+<p>Las bandas sombreadas son el intervalo de confianza del 95 %. Cuando un subgrupo tiene menos de 30
+adultos en un grupo de edad, el dashboard omite ese punto para no mostrar prevalencias inestables.</p>
+</section>
+<section id="factores-de-riesgo">
+<h2>2.3 Factores de riesgo<a class="headerlink" href="#factores-de-riesgo" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"frecuencia_depresion"</span><span class="p">,</span> <span class="s2">"dificultad_auditiva"</span><span class="p">,</span> <span class="s2">"educacion"</span><span class="p">]:</span>
+    <span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_prev_categoria</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5a9754ceea277d2c53b72005e92d1adb8c0c975a3be35e62643a4a10b302385e.png" src="_images/5a9754ceea277d2c53b72005e92d1adb8c0c975a3be35e62643a4a10b302385e.png" />
+<img alt="_images/166437eed2da1362884fb026d20b4903c7e93f652b0f1bf70b1902d7539ac2e9.png" src="_images/166437eed2da1362884fb026d20b4903c7e93f652b0f1bf70b1902d7539ac2e9.png" />
+<img alt="_images/faab80c86521d838d25ebafa3b3e4bb493dba86f3ab49d26688892b16e174d12.png" src="_images/faab80c86521d838d25ebafa3b3e4bb493dba86f3ab49d26688892b16e174d12.png" />
+</div>
+</div>
+<p>Cada barra es la prevalencia de dificultad cognitiva dentro de una categoría, con su intervalo de
+confianza, y la línea punteada es la prevalencia global. Las barras rojas superan el promedio y las azules quedan por debajo. En el
+dashboard se puede elegir cualquiera de las 13 predictoras categóricas; aquí mostramos tres, que ilustran los tres
+patrones que se repiten.</p>
+<p>La frecuencia de síntomas depresivos muestra el gradiente más claro, un patrón de dosis-respuesta: la prevalencia
+pasa del 11,6 % en quienes nunca se sienten deprimidos al 22,2 % si les ocurre pocas veces al año, 34,8 % mensualmente, 45,4 % semanalmente y
+59,0 % todos los días. En cada escalón la prevalencia aumenta, y el último multiplica por cinco la del primero. La dificultad auditiva sigue el mismo
+patrón con menos escalones, de 16,1 % sin dificultad a 40,8 % con alguna; la visual es parecida (16,2 % y 38,3 %). La
+escolaridad es el ejemplo de un factor protector: la prevalencia baja de 28,9 % en quienes no terminaron la secundaria
+a 14,3 % en quienes tienen posgrado, un descenso casi continuo que concuerda con la hipótesis de la reserva cognitiva.</p>
+<p>Si se elige una variable con categorías raras, como la audición, el dashboard muestra también la categoría «No
+puede», que tiene apenas 0,07 % de los adultos y un intervalo enorme. Esa categoría rompe el gradiente por
+falta de casos, no por un fenómeno real, y es la razón por la que en el preprocesamiento se agrupa con «Mucha».</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_cramer</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">tabla_cramer</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">etiqueta</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">ETIQUETAS</span><span class="p">))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"V"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[[</span><span class="s2">"etiqueta"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"etiqueta"</span><span class="p">:</span> <span class="s2">"factor"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">:</span> <span class="s2">"V de Cramér"</span><span class="p">}),</span> <span class="p">{</span><span class="s2">"V de Cramér"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.3f}</span><span class="s2">"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4be187cfc79128a16e4d27fcefac9c8b41e515cf6e10026e737ef85db7c7d6c0.png" src="_images/4be187cfc79128a16e4d27fcefac9c8b41e515cf6e10026e737ef85db7c7d6c0.png" />
+<div class="output text_html"><style type="text/css">
+#T_37fda_row0_col0, #T_37fda_row0_col1, #T_37fda_row1_col0, #T_37fda_row1_col1, #T_37fda_row2_col0, #T_37fda_row2_col1, #T_37fda_row3_col0, #T_37fda_row3_col1, #T_37fda_row4_col0, #T_37fda_row4_col1, #T_37fda_row5_col0, #T_37fda_row5_col1, #T_37fda_row6_col0, #T_37fda_row6_col1, #T_37fda_row7_col0, #T_37fda_row7_col1, #T_37fda_row8_col0, #T_37fda_row8_col1, #T_37fda_row9_col0, #T_37fda_row9_col1, #T_37fda_row10_col0, #T_37fda_row10_col1, #T_37fda_row11_col0, #T_37fda_row11_col1, #T_37fda_row12_col0, #T_37fda_row12_col1, #T_37fda_row13_col0, #T_37fda_row13_col1 {
+  text-align: left;
+}
+</style>
+<table id="T_37fda">
+  <thead>
+    <tr>
+      <th id="T_37fda_level0_col0" class="col_heading level0 col0" >factor</th>
+      <th id="T_37fda_level0_col1" class="col_heading level0 col1" >V de Cramér</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_37fda_row0_col0" class="data row0 col0" >Frecuencia de síntomas depresivos</td>
+      <td id="T_37fda_row0_col1" class="data row0 col1" >0.314</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row1_col0" class="data row1 col0" >Diagnóstico de depresión</td>
+      <td id="T_37fda_row1_col1" class="data row1 col1" >0.286</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row2_col0" class="data row2 col0" >Dificultad auditiva</td>
+      <td id="T_37fda_row2_col1" class="data row2 col1" >0.245</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row3_col0" class="data row3 col0" >Dificultad visual</td>
+      <td id="T_37fda_row3_col1" class="data row3 col1" >0.230</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row4_col0" class="data row4 col0" >Edad</td>
+      <td id="T_37fda_row4_col1" class="data row4 col1" >0.159</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row5_col0" class="data row5 col0" >Colesterol alto</td>
+      <td id="T_37fda_row5_col1" class="data row5 col1" >0.124</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row6_col0" class="data row6 col0" >Hipertensión</td>
+      <td id="T_37fda_row6_col1" class="data row6 col1" >0.120</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row7_col0" class="data row7 col0" >Antecedente de ACV</td>
+      <td id="T_37fda_row7_col1" class="data row7 col1" >0.116</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row8_col0" class="data row8 col0" >Escolaridad</td>
+      <td id="T_37fda_row8_col1" class="data row8 col1" >0.113</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row9_col0" class="data row9 col0" >Tabaquismo</td>
+      <td id="T_37fda_row9_col1" class="data row9 col1" >0.106</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row10_col0" class="data row10 col0" >Diabetes</td>
+      <td id="T_37fda_row10_col1" class="data row10 col1" >0.097</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row11_col0" class="data row11 col0" >Raza / etnia</td>
+      <td id="T_37fda_row11_col1" class="data row11 col1" >0.071</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row12_col0" class="data row12 col0" >Sexo</td>
+      <td id="T_37fda_row12_col1" class="data row12 col1" >0.049</td>
+    </tr>
+    <tr>
+      <td id="T_37fda_row13_col0" class="data row13 col0" >Categoría de IMC</td>
+      <td id="T_37fda_row13_col1" class="data row13 col1" >0.048</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>La V de Cramér resume cuánta asociación hay entre cada factor y la variable objetivo, en una escala de 0 a 1. Se
+leen los valores de 0,1 como una asociación pequeña y de 0,3 como moderada. La salud mental encabeza la lista con
+la frecuencia de síntomas depresivos (V = 0,31) y el diagnóstico de depresión (0,29), le siguen las pérdidas sensoriales
+(audición 0,25 y visión 0,23) y después la edad (0,16, calculada con cinco grupos). Los factores vasculares y de estilo de vida
+quedan en un nivel pequeño, entre 0,10 y 0,12: colesterol (0,12), hipertensión (0,12), ACV (0,12), escolaridad (0,11) y
+tabaquismo (0,11). Con menos de 0,10 están diabetes (0,10), raza o etnia (0,07), sexo (0,05) e IMC (0,05).</p>
+<p>Las asociaciones son todas en la dirección que predice la literatura, lo que respalda la validez de la variable
+objetivo. También muestra algo importante para lo que viene: ningún factor por sí solo es
+decisivo. Los efectos son moderados y el modelo tendrá que combinar muchas señales débiles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_heatmap_dos</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">"grupo_edad_amplio"</span><span class="p">,</span> <span class="s2">"frecuencia_depresion"</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_heatmap_dos</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">"acv"</span><span class="p">,</span> <span class="s2">"dificultad_auditiva"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5cc5dbbf56b76c4bb29900b653bbf21f710406f2eb95904f6f784f983386925c.png" src="_images/5cc5dbbf56b76c4bb29900b653bbf21f710406f2eb95904f6f784f983386925c.png" />
+<img alt="_images/5c842daae8b442f54d9ddf8a6b4643647fc7d4563dbb07904a6f0a2d4a35a61e.png" src="_images/5c842daae8b442f54d9ddf8a6b4643647fc7d4563dbb07904a6f0a2d4a35a61e.png" />
+</div>
+</div>
+<p>El mapa de calor cruza dos factores a la vez, y cada celda es la prevalencia de ese cruce. Con la edad en el eje
+horizontal y los síntomas depresivos en el vertical, se pueden leer dos efectos a la vez. Hacia abajo, a mayor frecuencia de síntomas,
+mayor prevalencia en todas las edades. Hacia la derecha, a mayor edad, mayor prevalencia, pero el aumento es mucho
+más fuerte en la fila de quienes nunca se sienten deprimidos (de 7 % a 27 %) que en la de quienes se sienten
+deprimidos a diario (de 58 % a 63 %). Para los adultos con síntomas diarios la edad casi no añade nada: la
+depresión ya concentra buena parte del riesgo. Es un hallazgo que las gráficas de una sola variable no revelan.</p>
+<p>El segundo cruce, ACV con dificultad auditiva, tiene celdas más pequeñas. El dashboard oculta las que tienen menos de
+30 adultos, y por eso conviene fijarse en el tamaño de muestra que aparece al pasar el cursor.</p>
+</section>
+<section id="el-acv-como-exposicion-de-interes">
+<h2>2.4 El ACV como exposición de interés<a class="headerlink" href="#el-acv-como-exposicion-de-interes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_acv_edad</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_or_acv</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">tabla_or_acv</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"ic_inf"</span><span class="p">:</span> <span class="s2">"IC inf."</span><span class="p">,</span> <span class="s2">"ic_sup"</span><span class="p">:</span> <span class="s2">"IC sup."</span><span class="p">,</span> <span class="s2">"n_acv"</span><span class="p">:</span> <span class="s2">"adultos con ACV"</span><span class="p">}),</span> <span class="p">{</span><span class="s2">"OR"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.2f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"IC inf."</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.2f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"IC sup."</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.2f}</span><span class="s2">"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16b176731b5907f06f6f7c64d7ce069d469d377e370fa8cf6f5b3c613b7c2218.png" src="_images/16b176731b5907f06f6f7c64d7ce069d469d377e370fa8cf6f5b3c613b7c2218.png" />
+<img alt="_images/1fd9af0f54240c16d7a45e5bb21ed8763b6fe4c9961905db8a58aae627ed0ac9.png" src="_images/1fd9af0f54240c16d7a45e5bb21ed8763b6fe4c9961905db8a58aae627ed0ac9.png" />
+<div class="output text_html"><style type="text/css">
+#T_7d9f2_row0_col0, #T_7d9f2_row0_col1, #T_7d9f2_row0_col2, #T_7d9f2_row0_col3, #T_7d9f2_row0_col4, #T_7d9f2_row1_col0, #T_7d9f2_row1_col1, #T_7d9f2_row1_col2, #T_7d9f2_row1_col3, #T_7d9f2_row1_col4, #T_7d9f2_row2_col0, #T_7d9f2_row2_col1, #T_7d9f2_row2_col2, #T_7d9f2_row2_col3, #T_7d9f2_row2_col4, #T_7d9f2_row3_col0, #T_7d9f2_row3_col1, #T_7d9f2_row3_col2, #T_7d9f2_row3_col3, #T_7d9f2_row3_col4, #T_7d9f2_row4_col0, #T_7d9f2_row4_col1, #T_7d9f2_row4_col2, #T_7d9f2_row4_col3, #T_7d9f2_row4_col4, #T_7d9f2_row5_col0, #T_7d9f2_row5_col1, #T_7d9f2_row5_col2, #T_7d9f2_row5_col3, #T_7d9f2_row5_col4, #T_7d9f2_row6_col0, #T_7d9f2_row6_col1, #T_7d9f2_row6_col2, #T_7d9f2_row6_col3, #T_7d9f2_row6_col4 {
+  text-align: left;
+}
+</style>
+<table id="T_7d9f2">
+  <thead>
+    <tr>
+      <th id="T_7d9f2_level0_col0" class="col_heading level0 col0" >grupo</th>
+      <th id="T_7d9f2_level0_col1" class="col_heading level0 col1" >OR</th>
+      <th id="T_7d9f2_level0_col2" class="col_heading level0 col2" >IC inf.</th>
+      <th id="T_7d9f2_level0_col3" class="col_heading level0 col3" >IC sup.</th>
+      <th id="T_7d9f2_level0_col4" class="col_heading level0 col4" >adultos con ACV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_7d9f2_row0_col0" class="data row0 col0" >Edad 18-44</td>
+      <td id="T_7d9f2_row0_col1" class="data row0 col1" >4.72</td>
+      <td id="T_7d9f2_row0_col2" class="data row0 col2" >3.07</td>
+      <td id="T_7d9f2_row0_col3" class="data row0 col3" >7.25</td>
+      <td id="T_7d9f2_row0_col4" class="data row0 col4" >83</td>
+    </tr>
+    <tr>
+      <td id="T_7d9f2_row1_col0" class="data row1 col0" >Edad 45-54</td>
+      <td id="T_7d9f2_row1_col1" class="data row1 col1" >3.43</td>
+      <td id="T_7d9f2_row1_col2" class="data row1 col2" >2.41</td>
+      <td id="T_7d9f2_row1_col3" class="data row1 col3" >4.89</td>
+      <td id="T_7d9f2_row1_col4" class="data row1 col4" >134</td>
+    </tr>
+    <tr>
+      <td id="T_7d9f2_row2_col0" class="data row2 col0" >Edad 55-64</td>
+      <td id="T_7d9f2_row2_col1" class="data row2 col1" >3.83</td>
+      <td id="T_7d9f2_row2_col2" class="data row2 col2" >3.00</td>
+      <td id="T_7d9f2_row2_col3" class="data row2 col3" >4.88</td>
+      <td id="T_7d9f2_row2_col4" class="data row2 col4" >274</td>
+    </tr>
+    <tr>
+      <td id="T_7d9f2_row3_col0" class="data row3 col0" >Edad 65-74</td>
+      <td id="T_7d9f2_row3_col1" class="data row3 col1" >2.93</td>
+      <td id="T_7d9f2_row3_col2" class="data row3 col2" >2.43</td>
+      <td id="T_7d9f2_row3_col3" class="data row3 col3" >3.54</td>
+      <td id="T_7d9f2_row3_col4" class="data row3 col4" >477</td>
+    </tr>
+    <tr>
+      <td id="T_7d9f2_row4_col0" class="data row4 col0" >Edad 75+</td>
+      <td id="T_7d9f2_row4_col1" class="data row4 col1" >1.68</td>
+      <td id="T_7d9f2_row4_col2" class="data row4 col2" >1.41</td>
+      <td id="T_7d9f2_row4_col3" class="data row4 col3" >1.99</td>
+      <td id="T_7d9f2_row4_col4" class="data row4 col4" >591</td>
+    </tr>
+    <tr>
+      <td id="T_7d9f2_row5_col0" class="data row5 col0" >OR crudo (todas las edades)</td>
+      <td id="T_7d9f2_row5_col1" class="data row5 col1" >3.37</td>
+      <td id="T_7d9f2_row5_col2" class="data row5 col2" >3.04</td>
+      <td id="T_7d9f2_row5_col3" class="data row5 col3" >3.73</td>
+      <td id="T_7d9f2_row5_col4" class="data row5 col4" >1560</td>
+    </tr>
+    <tr>
+      <td id="T_7d9f2_row6_col0" class="data row6 col0" >OR ajustado por edad (Mantel-Haenszel)</td>
+      <td id="T_7d9f2_row6_col1" class="data row6 col1" >2.52</td>
+      <td id="T_7d9f2_row6_col2" class="data row6 col2" >2.27</td>
+      <td id="T_7d9f2_row6_col3" class="data row6 col3" >2.80</td>
+      <td id="T_7d9f2_row6_col4" class="data row6 col4" >1560</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>El antecedente de ACV es la exposición que da nombre a la pregunta de investigación, y por eso la pestaña le dedica dos
+gráficas. En la primera, los adultos con ACV tienen una prevalencia de dificultad cognitiva del 45,3 % frente al 19,7 %
+de quienes no lo tuvieron. Pero el ACV es mucho más frecuente en los mayores: hay 591 casos en mayores de 75 años y 83
+en menores de 45. Como la edad también eleva por sí sola la dificultad, la comparación cruda mezcla dos efectos.</p>
+<p>La segunda gráfica los separa. El OR crudo del ACV es 3,37 (IC 95 %: 3,04-3,73). Al ajustar por grupo de edad con el estimador de
+Mantel-Haenszel baja a 2,52 (2,27-2,80), de modo que cerca de un tercio de la asociación cruda se explicaba por la edad y el
+resto es un efecto propio del ACV. Lo que más llama la atención son los estratos: el OR es 4,72 en
+menores de 45 años y baja de forma continua hasta 1,68 en mayores de 75. En los jóvenes el ACV multiplica la prevalencia de
+16,5 % a 48,2 %; en los mayores, la base ya es alta (34,3 %) y el ACV la lleva a 46,7 %. Es decir que
+la dificultad cognitiva tras un ACV es sobre todo un fenómeno relevante en las edades en que un ACV es raro, y la
+diferencia entre estratos sugiere una interacción entre ACV y edad. Con el filtro de edad se puede explorar
+cada tramo por separado.</p>
+<p>Un detalle de lectura: en el panel, si se filtra por «ACV: Sí» o «ACV: No», la segunda gráfica avisa de que no hay suficientes
+adultos con ACV, porque necesita ambos grupos para calcular el odds ratio.</p>
+</section>
+<section id="relaciones-entre-variables-y-estructura-de-los-datos">
+<h2>2.5 Relaciones entre variables y estructura de los datos<a class="headerlink" href="#relaciones-entre-variables-y-estructura-de-los-datos" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_info_mutua</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="s2">"mi"</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0387f4c054f5e84901d488ea763b1e50e449b192d35d7569494baf406bec2b8e.png" src="_images/0387f4c054f5e84901d488ea763b1e50e449b192d35d7569494baf406bec2b8e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frecuencia_depresion    0.0432
+depresion_dx            0.0356
+dificultad_auditiva     0.0261
+dificultad_visual       0.0232
+edad                    0.0140
+colesterol_alto         0.0074
+hipertension            0.0071
+educacion               0.0065
+acv                     0.0056
+tabaquismo              0.0054
+diabetes                0.0043
+raza_etnia              0.0028
+imc_categoria           0.0013
+sexo                    0.0012
+</pre></div>
+</div>
+</div>
+</div>
+<p>La información mutua mide cuánto reduce el conocimiento de una variable la incertidumbre sobre el objetivo, sin
+suponer que la relación es lineal. Ordena los factores casi igual que la V de Cramér: la frecuencia de síntomas depresivos
+(0,043 nats), el diagnóstico de depresión (0,036), la dificultad auditiva (0,026) y la visual (0,023). La diferencia
+está en la edad, que sube al quinto lugar (0,014): su correlación lineal con el objetivo es débil (r biserial de 0,17), pero la
+información mutua sí detecta la forma de U. Todos los valores son bajos, menores de 0,05, lo que confirma que ninguna variable
+determina por sí sola el resultado y que el desempeño dependerá de combinar señales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_cramer_heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s2">"cramer"</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="s2">"cramer"</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/59e71068512dea9bbeb56bc2540f0e1223a4989032079c7d1a2e27013d91c56a.png" src="_images/59e71068512dea9bbeb56bc2540f0e1223a4989032079c7d1a2e27013d91c56a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>depresion_dx     frecuencia_depresion    0.584
+hipertension     edad                    0.431
+colesterol_alto  edad                    0.389
+hipertension     colesterol_alto         0.377
+                 diabetes                0.277
+colesterol_alto  diabetes                0.250
+</pre></div>
+</div>
+</div>
+</div>
+<p>El mapa de asociación entre predictoras responde a otra pregunta: si algunas variables dicen lo mismo. La pareja más
+asociada es el diagnóstico de depresión con la frecuencia de síntomas (V = 0,58), algo natural porque miden el mismo
+fenómeno por vías distintas, el historial diagnóstico y el estado actual. Después vienen hipertensión con edad (0,43),
+colesterol con edad (0,39) e hipertensión con colesterol (0,38), el conocido agrupamiento cardiometabólico que crece con los
+años. Nada supera 0,6, y por eso se mantienen las dos variables de depresión. Más abajo comprobamos con los VIF que no hay
+una multicolinealidad que afecte al modelo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s2">"pca"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Varianza explicada por las 5 primeras componentes:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">"varianza"</span><span class="p">][:</span><span class="mi">5</span><span class="p">],</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">"| acumulada en 2:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">"acum"</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">"| en 5:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">"acum"</span><span class="p">][</span><span class="mi">4</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Componentes para el 80 %: </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'k80'</span><span class="p">]</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">'varianza'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_pca</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s2">"puntos"</span><span class="p">],</span> <span class="s2">"Dificultad cognitiva"</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_pca</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s2">"puntos"</span><span class="p">],</span> <span class="s2">"Antecedente de ACV"</span><span class="p">))</span>
+<span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_scree</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">cp</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"CP1"</span><span class="p">,</span> <span class="s2">"CP2"</span><span class="p">,</span> <span class="s2">"CP3"</span><span class="p">]:</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s2">"cargas"</span><span class="p">][</span><span class="n">cp</span><span class="p">];</span> <span class="nb">print</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">cc</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">cc</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)[:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Varianza explicada por las 5 primeras componentes: [0.097 0.07  0.06  0.057 0.054] | acumulada en 2: 0.167 | en 5: 0.337
+Componentes para el 80 %: 16 de 28
+</pre></div>
+</div>
+<img alt="_images/88fcff84e716c9429e7b27daa9c6abb6db477520da33fe2b4ded2f7d9e2f2c23.png" src="_images/88fcff84e716c9429e7b27daa9c6abb6db477520da33fe2b4ded2f7d9e2f2c23.png" />
+<img alt="_images/9a72cf2f413344b774d275bff661b72fa24f88884907ae0cf4c5df9c9e8540e3.png" src="_images/9a72cf2f413344b774d275bff661b72fa24f88884907ae0cf4c5df9c9e8540e3.png" />
+<img alt="_images/db6e27214f34b57ce2326e899bd94b0f3e05ba175bd10457f738e5f3e2a75d51.png" src="_images/db6e27214f34b57ce2326e899bd94b0f3e05ba175bd10457f738e5f3e2a75d51.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CP1 {'hipertension_Sí': 0.45, 'edad': 0.42, 'colesterol_alto_Sí': 0.4, 'diabetes_Sí': 0.32, 'dificultad_auditiva_Alguna': 0.25, 'acv_Sí': 0.21}
+CP2 {'depresion_dx_Sí': 0.41, 'imc_categoria_Sobrepeso': -0.34, 'imc_categoria_Obesidad': 0.34, 'edad': -0.31, 'frecuencia_depresion_Diaria': 0.26, 'frecuencia_depresion_Semanal': 0.25}
+CP3 {'imc_categoria_Obesidad': 0.49, 'imc_categoria_Sobrepeso': -0.43, 'depresion_dx_Sí': -0.42, 'frecuencia_depresion_Semanal': -0.26, 'frecuencia_depresion_Diaria': -0.24, 'educacion_Secundaria o GED': 0.22}
+</pre></div>
+</div>
+</div>
+</div>
+<p>El análisis de componentes principales resume las 28 columnas codificadas en pocas dimensiones para ver si
+hay estructura. La varianza queda muy repartida: la primera componente explica solo el 9,7 %, las dos primeras el 16,7 % y se necesitan 16
+de las 28 para llegar al 80 %. Esto indica que las predictoras aportan información poco redundante, coherente con los VIF bajos, y
+que reducir la dimensión no traería ventaja.</p>
+<p>Las componentes se pueden interpretar por sus cargas. La primera reúne hipertensión, edad, colesterol, diabetes, dificultad auditiva y ACV: es un eje de
+envejecimiento y riesgo cardiometabólico. La segunda se define por el diagnóstico de depresión y los síntomas, con la edad en sentido
+opuesto, porque los síntomas depresivos son más frecuentes en los adultos jóvenes. La tercera tiene que ver sobre todo con el peso corporal.</p>
+<p>En el diagrama de dispersión, los adultos con dificultad (rojo) se desplazan hacia valores altos de la primera componente,
+pero se solapan ampliamente con los demás; no hay una frontera lineal evidente. Es una advertencia temprana de que el desempeño será moderado. El selector
+«Colorear por» permite pintar los mismos puntos por antecedente de ACV, depresión, año, edad o grupo, y los filtros
+laterales también actúan sobre este gráfico, que muestra una muestra de 6.000 adultos. Al colorear por
+ACV se ve que los adultos con ACV se concentran a la derecha, en la zona del eje cardiometabólico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_clusters</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="s2">"pca"</span><span class="p">][</span><span class="s2">"perfil_clusters"</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"cluster"</span><span class="p">:</span> <span class="s2">"grupo"</span><span class="p">,</span> <span class="s2">"edad_media"</span><span class="p">:</span> <span class="s2">"edad media"</span><span class="p">,</span> <span class="s2">"depresion_dx"</span><span class="p">:</span> <span class="s2">"con depresión"</span><span class="p">,</span> <span class="s2">"fumador_actual"</span><span class="p">:</span> <span class="s2">"fumador actual"</span><span class="p">}),</span>
+    <span class="p">{</span><span class="s2">"n"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:,.0f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"prevalencia"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"edad media"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"hipertension"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.0%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"con depresión"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.0%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"mujeres"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.0%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"fumador actual"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.0%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"acv"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.0%}</span><span class="s2">"</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Silueta por k:"</span><span class="p">,</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">A</span><span class="p">[</span><span class="s2">"pca"</span><span class="p">][</span><span class="s2">"silueta"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span> <span class="s2">"-&gt; k elegido:"</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="s2">"pca"</span><span class="p">][</span><span class="s2">"k_opt"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/871edf505f8fcfd0762a5827d84e5420e957f1f2f251b650e9f8823959655443.png" src="_images/871edf505f8fcfd0762a5827d84e5420e957f1f2f251b650e9f8823959655443.png" />
+<div class="output text_html"><style type="text/css">
+#T_a971c_row0_col0, #T_a971c_row0_col1, #T_a971c_row0_col2, #T_a971c_row0_col3, #T_a971c_row0_col4, #T_a971c_row0_col5, #T_a971c_row0_col6, #T_a971c_row0_col7, #T_a971c_row0_col8, #T_a971c_row1_col0, #T_a971c_row1_col1, #T_a971c_row1_col2, #T_a971c_row1_col3, #T_a971c_row1_col4, #T_a971c_row1_col5, #T_a971c_row1_col6, #T_a971c_row1_col7, #T_a971c_row1_col8, #T_a971c_row2_col0, #T_a971c_row2_col1, #T_a971c_row2_col2, #T_a971c_row2_col3, #T_a971c_row2_col4, #T_a971c_row2_col5, #T_a971c_row2_col6, #T_a971c_row2_col7, #T_a971c_row2_col8, #T_a971c_row3_col0, #T_a971c_row3_col1, #T_a971c_row3_col2, #T_a971c_row3_col3, #T_a971c_row3_col4, #T_a971c_row3_col5, #T_a971c_row3_col6, #T_a971c_row3_col7, #T_a971c_row3_col8, #T_a971c_row4_col0, #T_a971c_row4_col1, #T_a971c_row4_col2, #T_a971c_row4_col3, #T_a971c_row4_col4, #T_a971c_row4_col5, #T_a971c_row4_col6, #T_a971c_row4_col7, #T_a971c_row4_col8 {
+  text-align: left;
+}
+</style>
+<table id="T_a971c">
+  <thead>
+    <tr>
+      <th id="T_a971c_level0_col0" class="col_heading level0 col0" >grupo</th>
+      <th id="T_a971c_level0_col1" class="col_heading level0 col1" >n</th>
+      <th id="T_a971c_level0_col2" class="col_heading level0 col2" >prevalencia</th>
+      <th id="T_a971c_level0_col3" class="col_heading level0 col3" >edad media</th>
+      <th id="T_a971c_level0_col4" class="col_heading level0 col4" >hipertension</th>
+      <th id="T_a971c_level0_col5" class="col_heading level0 col5" >con depresión</th>
+      <th id="T_a971c_level0_col6" class="col_heading level0 col6" >mujeres</th>
+      <th id="T_a971c_level0_col7" class="col_heading level0 col7" >fumador actual</th>
+      <th id="T_a971c_level0_col8" class="col_heading level0 col8" >acv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_a971c_row0_col0" class="data row0 col0" >0</td>
+      <td id="T_a971c_row0_col1" class="data row0 col1" >6,645</td>
+      <td id="T_a971c_row0_col2" class="data row0 col2" >13.5%</td>
+      <td id="T_a971c_row0_col3" class="data row0 col3" >53.8</td>
+      <td id="T_a971c_row0_col4" class="data row0 col4" >31%</td>
+      <td id="T_a971c_row0_col5" class="data row0 col5" >16%</td>
+      <td id="T_a971c_row0_col6" class="data row0 col6" >56%</td>
+      <td id="T_a971c_row0_col7" class="data row0 col7" >3%</td>
+      <td id="T_a971c_row0_col8" class="data row0 col8" >2%</td>
+    </tr>
+    <tr>
+      <td id="T_a971c_row1_col0" class="data row1 col0" >1</td>
+      <td id="T_a971c_row1_col1" class="data row1 col1" >10,386</td>
+      <td id="T_a971c_row1_col2" class="data row1 col2" >14.8%</td>
+      <td id="T_a971c_row1_col3" class="data row1 col3" >49.8</td>
+      <td id="T_a971c_row1_col4" class="data row1 col4" >29%</td>
+      <td id="T_a971c_row1_col5" class="data row1 col5" >15%</td>
+      <td id="T_a971c_row1_col6" class="data row1 col6" >53%</td>
+      <td id="T_a971c_row1_col7" class="data row1 col7" >5%</td>
+      <td id="T_a971c_row1_col8" class="data row1 col8" >2%</td>
+    </tr>
+    <tr>
+      <td id="T_a971c_row2_col0" class="data row2 col0" >2</td>
+      <td id="T_a971c_row2_col1" class="data row2 col1" >12,685</td>
+      <td id="T_a971c_row2_col2" class="data row2 col2" >21.5%</td>
+      <td id="T_a971c_row2_col3" class="data row2 col3" >53.7</td>
+      <td id="T_a971c_row2_col4" class="data row2 col4" >40%</td>
+      <td id="T_a971c_row2_col5" class="data row2 col5" >15%</td>
+      <td id="T_a971c_row2_col6" class="data row2 col6" >52%</td>
+      <td id="T_a971c_row2_col7" class="data row2 col7" >18%</td>
+      <td id="T_a971c_row2_col8" class="data row2 col8" >4%</td>
+    </tr>
+    <tr>
+      <td id="T_a971c_row3_col0" class="data row3 col0" >3</td>
+      <td id="T_a971c_row3_col1" class="data row3 col1" >13,280</td>
+      <td id="T_a971c_row3_col2" class="data row3 col2" >22.3%</td>
+      <td id="T_a971c_row3_col3" class="data row3 col3" >54.1</td>
+      <td id="T_a971c_row3_col4" class="data row3 col4" >42%</td>
+      <td id="T_a971c_row3_col5" class="data row3 col5" >19%</td>
+      <td id="T_a971c_row3_col6" class="data row3 col6" >57%</td>
+      <td id="T_a971c_row3_col7" class="data row3 col7" >11%</td>
+      <td id="T_a971c_row3_col8" class="data row3 col8" >4%</td>
+    </tr>
+    <tr>
+      <td id="T_a971c_row4_col0" class="data row4 col0" >4</td>
+      <td id="T_a971c_row4_col1" class="data row4 col1" >1,907</td>
+      <td id="T_a971c_row4_col2" class="data row4 col2" >59.0%</td>
+      <td id="T_a971c_row4_col3" class="data row4 col3" >52.5</td>
+      <td id="T_a971c_row4_col4" class="data row4 col4" >49%</td>
+      <td id="T_a971c_row4_col5" class="data row4 col5" >80%</td>
+      <td id="T_a971c_row4_col6" class="data row4 col6" >61%</td>
+      <td id="T_a971c_row4_col7" class="data row4 col7" >25%</td>
+      <td id="T_a971c_row4_col8" class="data row4 col8" >9%</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Silueta por k: {2: 0.101, 3: 0.091, 4: 0.132, 5: 0.147, 6: 0.139} -&gt; k elegido: 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>El agrupamiento con K-means sobre las componentes que explican el 80 % de la varianza es solo descriptivo. El coeficiente de silueta es bajo
+en todos los valores de k que se evaluaron (entre 0,09 y 0,15), y eso quiere decir que los adultos no forman grupos bien separados, sino un
+continuo de perfiles. Se reporta la solución de k = 5, la de mayor silueta, con esa advertencia.</p>
+<p>Aun así, los perfiles son informativos. Hay un grupo pequeño, de 1.907 adultos, donde el 80 % tiene diagnóstico de depresión, uno
+de cada cuatro fuma y la prevalencia de dificultad cognitiva es del 59 %, casi tres veces la global. Dos grupos más grandes (12.685 y
+13.280 adultos) tienen prevalencias de 21,5 % y 22,3 %, con más hipertensión, más tabaquismo y más ACV. Los otros dos grupos, de adultos más jóvenes y con
+menos carga de enfermedad, tienen prevalencias de 13,5 % y 14,8 %. Hay al menos dos rutas distintas hacia la dificultad cognitiva
+subjetiva, una afectiva y otra vascular y de envejecimiento. Un modelo lineal aditivo las captura solo en parte, y
+los modelos no lineales de las siguientes entregas podrían aprovecharlas mejor.</p>
+</section>
+<section id="calidad-de-los-datos-y-auditoria-de-fuga">
+<h2>2.6 Calidad de los datos y auditoría de fuga<a class="headerlink" href="#calidad-de-los-datos-y-auditoria-de-fuga" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_faltantes</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Filas con al menos un faltante en las predictoras: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="n">PREDICTORAS</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ee0dc8c1c3cfccc0fdfa43df6674b0c16e89173dbda5dd13b823c3e3465e2a91.png" src="_images/ee0dc8c1c3cfccc0fdfa43df6674b0c16e89173dbda5dd13b823c3e3465e2a91.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filas con al menos un faltante en las predictoras: 6.18%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los datos faltantes son escasos. Ninguna predictora supera el 3 %: tabaquismo (3,0 %), frecuencia de depresión
+(2,3 %) y categoría de IMC (2,2 %) son las más afectadas, y solo el 6,2 % de las filas tiene algún faltante en las predictoras. El
+valor que se sale de la escala es el IMC numérico, con 8,5 %, casi cuatro veces el de su categoría. La razón no es azarosa: el NCHS
+reemplaza el peso o la talla por un código de supresión cuando el valor es excepcionalmente alto o bajo, de modo que el dato falta justo
+por ser extremo. Entre quienes tienen el dato suprimido el 57,9 % tiene obesidad, frente a 31,5 % entre quienes lo tienen publicado
+(la categoría de IMC se calculó antes de la supresión y por eso lo permite comprobar). Si se hubiera usado el IMC numérico imputado con la
+mediana, se habrían borrado los casos extremos. Por eso el modelo usa la categoría y no el valor numérico.</p>
+<p>Con el panel de filtros se puede ver cómo cambian los faltantes entre subgrupos. Por ejemplo, entre las mujeres el faltante de la categoría de IMC es
+bastante mayor que entre los hombres, lo que coincide con lo que se reporta en la literatura sobre la no respuesta al peso en las encuestas de salud.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_sesgo</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="s2">"sesgo"</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"diferencia_pp"</span><span class="p">:</span> <span class="s2">"diferencia (pp)"</span><span class="p">}),</span> <span class="p">{</span><span class="s2">"Muestra sin ponderar"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Población ponderada (EE. UU.)"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"diferencia (pp)"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:+.1f}</span><span class="s2">"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e4fcbd8bc494e4695bd32c30006dbaa814f0bffbb24e49efe91cc18b497d0437.png" src="_images/e4fcbd8bc494e4695bd32c30006dbaa814f0bffbb24e49efe91cc18b497d0437.png" />
+<div class="output text_html"><style type="text/css">
+#T_c2f5d_row0_col0, #T_c2f5d_row0_col1, #T_c2f5d_row0_col2, #T_c2f5d_row0_col3, #T_c2f5d_row1_col0, #T_c2f5d_row1_col1, #T_c2f5d_row1_col2, #T_c2f5d_row1_col3, #T_c2f5d_row2_col0, #T_c2f5d_row2_col1, #T_c2f5d_row2_col2, #T_c2f5d_row2_col3, #T_c2f5d_row3_col0, #T_c2f5d_row3_col1, #T_c2f5d_row3_col2, #T_c2f5d_row3_col3, #T_c2f5d_row4_col0, #T_c2f5d_row4_col1, #T_c2f5d_row4_col2, #T_c2f5d_row4_col3, #T_c2f5d_row5_col0, #T_c2f5d_row5_col1, #T_c2f5d_row5_col2, #T_c2f5d_row5_col3, #T_c2f5d_row6_col0, #T_c2f5d_row6_col1, #T_c2f5d_row6_col2, #T_c2f5d_row6_col3 {
+  text-align: left;
+}
+</style>
+<table id="T_c2f5d">
+  <thead>
+    <tr>
+      <th id="T_c2f5d_level0_col0" class="col_heading level0 col0" >indicador</th>
+      <th id="T_c2f5d_level0_col1" class="col_heading level0 col1" >Muestra sin ponderar</th>
+      <th id="T_c2f5d_level0_col2" class="col_heading level0 col2" >Población ponderada (EE. UU.)</th>
+      <th id="T_c2f5d_level0_col3" class="col_heading level0 col3" >diferencia (pp)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_c2f5d_row0_col0" class="data row0 col0" >Dificultad cognitiva</td>
+      <td id="T_c2f5d_row0_col1" class="data row0 col1" >20.6%</td>
+      <td id="T_c2f5d_row0_col2" class="data row0 col2" >19.4%</td>
+      <td id="T_c2f5d_row0_col3" class="data row0 col3" >+1.2</td>
+    </tr>
+    <tr>
+      <td id="T_c2f5d_row1_col0" class="data row1 col0" >65 años o más</td>
+      <td id="T_c2f5d_row1_col1" class="data row1 col1" >31.8%</td>
+      <td id="T_c2f5d_row1_col2" class="data row1 col2" >21.8%</td>
+      <td id="T_c2f5d_row1_col3" class="data row1 col3" >+10.0</td>
+    </tr>
+    <tr>
+      <td id="T_c2f5d_row2_col0" class="data row2 col0" >Mujer</td>
+      <td id="T_c2f5d_row2_col1" class="data row2 col1" >54.5%</td>
+      <td id="T_c2f5d_row2_col2" class="data row2 col2" >51.5%</td>
+      <td id="T_c2f5d_row2_col3" class="data row2 col3" >+3.0</td>
+    </tr>
+    <tr>
+      <td id="T_c2f5d_row3_col0" class="data row3 col0" >Blanco no hispano</td>
+      <td id="T_c2f5d_row3_col1" class="data row3 col1" >66.1%</td>
+      <td id="T_c2f5d_row3_col2" class="data row3 col2" >62.1%</td>
+      <td id="T_c2f5d_row3_col3" class="data row3 col3" >+4.0</td>
+    </tr>
+    <tr>
+      <td id="T_c2f5d_row4_col0" class="data row4 col0" >Hispano</td>
+      <td id="T_c2f5d_row4_col1" class="data row4 col1" >14.5%</td>
+      <td id="T_c2f5d_row4_col2" class="data row4 col2" >17.3%</td>
+      <td id="T_c2f5d_row4_col3" class="data row4 col3" >-2.8</td>
+    </tr>
+    <tr>
+      <td id="T_c2f5d_row5_col0" class="data row5 col0" >Pregrado o posgrado</td>
+      <td id="T_c2f5d_row5_col1" class="data row5 col1" >38.3%</td>
+      <td id="T_c2f5d_row5_col2" class="data row5 col2" >33.2%</td>
+      <td id="T_c2f5d_row5_col3" class="data row5 col3" >+5.1</td>
+    </tr>
+    <tr>
+      <td id="T_c2f5d_row6_col0" class="data row6 col0" >Antecedente de ACV</td>
+      <td id="T_c2f5d_row6_col1" class="data row6 col1" >3.5%</td>
+      <td id="T_c2f5d_row6_col2" class="data row6 col2" >2.6%</td>
+      <td id="T_c2f5d_row6_col3" class="data row6 col3" >+0.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>La NHIS tiene un diseño muestral complejo y cada adulto trae un peso que indica a cuántas personas de la población representa. Comparar las
+proporciones sin ponderar, que es lo que ve el modelo, con las ponderadas, que describen a Estados Unidos, da una idea de hacia dónde está
+sesgada la muestra. Los adultos de 65 años o más son el 31,8 % de la muestra pero el 21,8 % de la población, una diferencia de 10 puntos. Las
+personas con estudios universitarios están sobrerrepresentadas en 5,1 puntos, los blancos no hispanos en 4,0 y las mujeres en 3,0, mientras que
+los hispanos están subrepresentados en 2,8. Como la dificultad cognitiva crece con la edad, la prevalencia en la muestra (20,6 %) queda
+un poco por encima de la poblacional (19,4 %).</p>
+<p>El modelo se entrena sin pesos porque su objetivo es discriminar entre personas y no estimar prevalencias del país. Pero sus probabilidades
+reflejan la composición de la muestra, no la de la población estadounidense, y mucho menos la de otro país.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">fig_auditoria_fuga</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="s2">"auc_uni"</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"auc"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">ETIQUETAS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)))</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"auc"</span><span class="p">:</span> <span class="s2">"ROC-AUC"</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">:</span> <span class="s2">"desv. est."</span><span class="p">,</span> <span class="s2">"grupo"</span><span class="p">:</span> <span class="s2">"grupo"</span><span class="p">}),</span> <span class="p">{</span><span class="s2">"ROC-AUC"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.3f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"desv. est."</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.3f}</span><span class="s2">"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/26acbce185009a18746ec33c97dbee1fd50399f99e3fb66365edd9ad79dc13f8.png" src="_images/26acbce185009a18746ec33c97dbee1fd50399f99e3fb66365edd9ad79dc13f8.png" />
+<div class="output text_html"><style type="text/css">
+#T_5402a_row0_col0, #T_5402a_row0_col1, #T_5402a_row0_col2, #T_5402a_row0_col3, #T_5402a_row1_col0, #T_5402a_row1_col1, #T_5402a_row1_col2, #T_5402a_row1_col3, #T_5402a_row2_col0, #T_5402a_row2_col1, #T_5402a_row2_col2, #T_5402a_row2_col3, #T_5402a_row3_col0, #T_5402a_row3_col1, #T_5402a_row3_col2, #T_5402a_row3_col3, #T_5402a_row4_col0, #T_5402a_row4_col1, #T_5402a_row4_col2, #T_5402a_row4_col3, #T_5402a_row5_col0, #T_5402a_row5_col1, #T_5402a_row5_col2, #T_5402a_row5_col3, #T_5402a_row6_col0, #T_5402a_row6_col1, #T_5402a_row6_col2, #T_5402a_row6_col3, #T_5402a_row7_col0, #T_5402a_row7_col1, #T_5402a_row7_col2, #T_5402a_row7_col3, #T_5402a_row8_col0, #T_5402a_row8_col1, #T_5402a_row8_col2, #T_5402a_row8_col3, #T_5402a_row9_col0, #T_5402a_row9_col1, #T_5402a_row9_col2, #T_5402a_row9_col3, #T_5402a_row10_col0, #T_5402a_row10_col1, #T_5402a_row10_col2, #T_5402a_row10_col3, #T_5402a_row11_col0, #T_5402a_row11_col1, #T_5402a_row11_col2, #T_5402a_row11_col3, #T_5402a_row12_col0, #T_5402a_row12_col1, #T_5402a_row12_col2, #T_5402a_row12_col3, #T_5402a_row13_col0, #T_5402a_row13_col1, #T_5402a_row13_col2, #T_5402a_row13_col3, #T_5402a_row14_col0, #T_5402a_row14_col1, #T_5402a_row14_col2, #T_5402a_row14_col3, #T_5402a_row15_col0, #T_5402a_row15_col1, #T_5402a_row15_col2, #T_5402a_row15_col3, #T_5402a_row16_col0, #T_5402a_row16_col1, #T_5402a_row16_col2, #T_5402a_row16_col3, #T_5402a_row17_col0, #T_5402a_row17_col1, #T_5402a_row17_col2, #T_5402a_row17_col3, #T_5402a_row18_col0, #T_5402a_row18_col1, #T_5402a_row18_col2, #T_5402a_row18_col3 {
+  text-align: left;
+}
+</style>
+<table id="T_5402a">
+  <thead>
+    <tr>
+      <th id="T_5402a_level0_col0" class="col_heading level0 col0" >variable</th>
+      <th id="T_5402a_level0_col1" class="col_heading level0 col1" >ROC-AUC</th>
+      <th id="T_5402a_level0_col2" class="col_heading level0 col2" >desv. est.</th>
+      <th id="T_5402a_level0_col3" class="col_heading level0 col3" >grupo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_5402a_row0_col0" class="data row0 col0" >Frecuencia de dificultad cognitiva (seguimiento)</td>
+      <td id="T_5402a_row0_col1" class="data row0 col1" >0.929</td>
+      <td id="T_5402a_row0_col2" class="data row0 col2" >0.003</td>
+      <td id="T_5402a_row0_col3" class="data row0 col3" >Sospechosa de fuga</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row1_col0" class="data row1 col0" >Frecuencia de síntomas depresivos</td>
+      <td id="T_5402a_row1_col1" class="data row1 col1" >0.684</td>
+      <td id="T_5402a_row1_col2" class="data row1 col2" >0.008</td>
+      <td id="T_5402a_row1_col3" class="data row1 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row2_col0" class="data row2 col0" >Diagnóstico de depresión</td>
+      <td id="T_5402a_row2_col1" class="data row2 col1" >0.639</td>
+      <td id="T_5402a_row2_col2" class="data row2 col2" >0.007</td>
+      <td id="T_5402a_row2_col3" class="data row2 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row3_col0" class="data row3 col0" >Dificultad auditiva</td>
+      <td id="T_5402a_row3_col1" class="data row3 col1" >0.614</td>
+      <td id="T_5402a_row3_col2" class="data row3 col2" >0.004</td>
+      <td id="T_5402a_row3_col3" class="data row3 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row4_col0" class="data row4 col0" >Dificultad visual</td>
+      <td id="T_5402a_row4_col1" class="data row4 col1" >0.610</td>
+      <td id="T_5402a_row4_col2" class="data row4 col2" >0.006</td>
+      <td id="T_5402a_row4_col3" class="data row4 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row5_col0" class="data row5 col0" >Indicador de discapacidad</td>
+      <td id="T_5402a_row5_col1" class="data row5 col1" >0.608</td>
+      <td id="T_5402a_row5_col2" class="data row5 col2" >0.005</td>
+      <td id="T_5402a_row5_col3" class="data row5 col3" >Sospechosa de fuga</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row6_col0" class="data row6 col0" >Edad</td>
+      <td id="T_5402a_row6_col1" class="data row6 col1" >0.603</td>
+      <td id="T_5402a_row6_col2" class="data row6 col2" >0.007</td>
+      <td id="T_5402a_row6_col3" class="data row6 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row7_col0" class="data row7 col0" >Escolaridad</td>
+      <td id="T_5402a_row7_col1" class="data row7 col1" >0.574</td>
+      <td id="T_5402a_row7_col2" class="data row7 col2" >0.007</td>
+      <td id="T_5402a_row7_col3" class="data row7 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row8_col0" class="data row8 col0" >Hipertensión</td>
+      <td id="T_5402a_row8_col1" class="data row8 col1" >0.572</td>
+      <td id="T_5402a_row8_col2" class="data row8 col2" >0.005</td>
+      <td id="T_5402a_row8_col3" class="data row8 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row9_col0" class="data row9 col0" >Colesterol alto</td>
+      <td id="T_5402a_row9_col1" class="data row9 col1" >0.571</td>
+      <td id="T_5402a_row9_col2" class="data row9 col2" >0.005</td>
+      <td id="T_5402a_row9_col3" class="data row9 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row10_col0" class="data row10 col0" >Tabaquismo</td>
+      <td id="T_5402a_row10_col1" class="data row10 col1" >0.564</td>
+      <td id="T_5402a_row10_col2" class="data row10 col2" >0.007</td>
+      <td id="T_5402a_row10_col3" class="data row10 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row11_col0" class="data row11 col0" >Raza / etnia</td>
+      <td id="T_5402a_row11_col1" class="data row11 col1" >0.539</td>
+      <td id="T_5402a_row11_col2" class="data row11 col2" >0.006</td>
+      <td id="T_5402a_row11_col3" class="data row11 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row12_col0" class="data row12 col0" >Diabetes</td>
+      <td id="T_5402a_row12_col1" class="data row12 col1" >0.537</td>
+      <td id="T_5402a_row12_col2" class="data row12 col2" >0.005</td>
+      <td id="T_5402a_row12_col3" class="data row12 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row13_col0" class="data row13 col0" >Categoría de IMC</td>
+      <td id="T_5402a_row13_col1" class="data row13 col1" >0.532</td>
+      <td id="T_5402a_row13_col2" class="data row13 col2" >0.004</td>
+      <td id="T_5402a_row13_col3" class="data row13 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row14_col0" class="data row14 col0" >Sexo</td>
+      <td id="T_5402a_row14_col1" class="data row14 col1" >0.530</td>
+      <td id="T_5402a_row14_col2" class="data row14 col2" >0.005</td>
+      <td id="T_5402a_row14_col3" class="data row14 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row15_col0" class="data row15 col0" >Antecedente de ACV</td>
+      <td id="T_5402a_row15_col1" class="data row15 col1" >0.527</td>
+      <td id="T_5402a_row15_col2" class="data row15 col2" >0.004</td>
+      <td id="T_5402a_row15_col3" class="data row15 col3" >Predictora</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row16_col0" class="data row16 col0" >Diagnóstico de demencia</td>
+      <td id="T_5402a_row16_col1" class="data row16 col1" >0.515</td>
+      <td id="T_5402a_row16_col2" class="data row16 col2" >0.003</td>
+      <td id="T_5402a_row16_col3" class="data row16 col3" >Sospechosa de fuga</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row17_col0" class="data row17 col0" >Trimestre</td>
+      <td id="T_5402a_row17_col1" class="data row17 col1" >0.508</td>
+      <td id="T_5402a_row17_col2" class="data row17 col2" >0.003</td>
+      <td id="T_5402a_row17_col3" class="data row17 col3" >Metadato</td>
+    </tr>
+    <tr>
+      <td id="T_5402a_row18_col0" class="data row18 col0" >Año</td>
+      <td id="T_5402a_row18_col1" class="data row18 col1" >0.503</td>
+      <td id="T_5402a_row18_col2" class="data row18 col2" >0.004</td>
+      <td id="T_5402a_row18_col3" class="data row18 col3" >Metadato</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>La auditoría de fuga entrena una regresión logística con cada variable por separado y mide su ROC-AUC con validación cruzada. Un factor
+de riesgo legítimo de un fenómeno multifactorial no debería, por sí solo, acercarse a la zona de alerta de 0,9. Las 14 predictoras están entre 0,527
+(ACV) y 0,684 (frecuencia de síntomas depresivos). El ACV tiene el AUC más bajo a pesar de ser un factor fuerte porque afecta solo al 3,5 % de los adultos:
+identifica bien a esos pocos pero no discrimina en los demás. Los metadatos de año y trimestre quedan en 0,50, sin información sobre el objetivo.</p>
+<p>La pregunta de seguimiento sobre la frecuencia de la dificultad alcanza 0,929, algo imposible para un factor de riesgo, y la razón es que
+no predice el objetivo sino que lo contiene: su categoría «no aplica» equivale a haber respondido que no. La auditoría también enseña que los
+números no bastan. El indicador de discapacidad tiene un AUC de solo 0,608, que no dispararía ninguna alarma, y aun así se construye con la propia
+pregunta objetivo; el diagnóstico de demencia tiene 0,515 porque es raro (0,8 %), pero conceptualmente es un proxy del resultado. Las tres variables se
+descartan. Quedan «en observación» la frecuencia de síntomas depresivos, porque la depresión puede alterar la concentración y parte de su efecto sería solapamiento de síntomas, y las dificultades
+auditiva y visual, que usan la misma escala de respuesta del Washington Group que el objetivo y podrían inflar la correlación por estilo de respuesta.</p>
+</section>
+<section id="detalles-que-el-dashboard-no-muestra">
+<h2>2.7 Detalles que el dashboard no muestra<a class="headerlink" href="#detalles-que-el-dashboard-no-muestra" title="Link to this heading">#</a></h2>
+<section id="pruebas-estadisticas-detras-de-las-graficas">
+<h3>Pruebas estadísticas detrás de las gráficas<a class="headerlink" href="#pruebas-estadisticas-detras-de-las-graficas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Edad frente al objetivo (Mann-Whitney) y asociación de la edad con las demás predictoras (Kruskal-Wallis)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"edad"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"edad"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Edad con dificultad: mediana </span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">; sin dificultad: </span><span class="si">{</span><span class="n">b</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">; r biserial por rangos = </span><span class="si">{</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">u</span><span class="o">.</span><span class="n">statistic</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">PREDICTORAS_CAT</span><span class="p">:</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">v</span><span class="p">,</span> <span class="s2">"edad"</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">grupos</span> <span class="o">=</span> <span class="p">[</span><span class="n">g</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">sub</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">p_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kruskal</span><span class="p">(</span><span class="o">*</span><span class="n">grupos</span><span class="p">)</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">ETIQUETAS</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">grupos</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">grupos</span><span class="p">)))])</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">,</span> <span class="s2">"ε² con la edad"</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"ε² con la edad"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="p">{</span><span class="s2">"ε² con la edad"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.3f}</span><span class="s2">"</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Edad con dificultad: mediana 61; sin dificultad: 52; r biserial por rangos = 0.174
+</pre></div>
+</div>
+<div class="output text_html"><style type="text/css">
+#T_7d583_row0_col0, #T_7d583_row0_col1, #T_7d583_row1_col0, #T_7d583_row1_col1, #T_7d583_row2_col0, #T_7d583_row2_col1, #T_7d583_row3_col0, #T_7d583_row3_col1, #T_7d583_row4_col0, #T_7d583_row4_col1, #T_7d583_row5_col0, #T_7d583_row5_col1 {
+  text-align: left;
+}
+</style>
+<table id="T_7d583">
+  <thead>
+    <tr>
+      <th id="T_7d583_level0_col0" class="col_heading level0 col0" >variable</th>
+      <th id="T_7d583_level0_col1" class="col_heading level0 col1" >ε² con la edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_7d583_row0_col0" class="data row0 col0" >Hipertensión</td>
+      <td id="T_7d583_row0_col1" class="data row0 col1" >0.193</td>
+    </tr>
+    <tr>
+      <td id="T_7d583_row1_col0" class="data row1 col0" >Colesterol alto</td>
+      <td id="T_7d583_row1_col1" class="data row1 col1" >0.153</td>
+    </tr>
+    <tr>
+      <td id="T_7d583_row2_col0" class="data row2 col0" >Dificultad auditiva</td>
+      <td id="T_7d583_row2_col1" class="data row2 col1" >0.064</td>
+    </tr>
+    <tr>
+      <td id="T_7d583_row3_col0" class="data row3 col0" >Raza / etnia</td>
+      <td id="T_7d583_row3_col1" class="data row3 col1" >0.057</td>
+    </tr>
+    <tr>
+      <td id="T_7d583_row4_col0" class="data row4 col0" >Diabetes</td>
+      <td id="T_7d583_row4_col1" class="data row4 col1" >0.048</td>
+    </tr>
+    <tr>
+      <td id="T_7d583_row5_col0" class="data row5 col0" >Tabaquismo</td>
+      <td id="T_7d583_row5_col1" class="data row5 col1" >0.045</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Quienes reportan dificultad son mayores, con una mediana de 61 años frente a 52, pero el efecto lineal es pequeño (r biserial de 0,17); la
+forma de U que vimos antes es la que explica por qué. La edad, en cambio, está fuertemente ligada a algunas predictoras: la
+hipertensión (ε² = 0,19) y el colesterol alto (0,15) se concentran en los adultos mayores, con una diferencia mediana de unos 20 años, y la dificultad
+auditiva también (0,06). Eso anticipa un problema de confusión por edad: parte de la asociación cruda de esos factores con el objetivo es simplemente que marcan
+mayor edad, y el modelo tendrá que ajustar por ella. Es lo que pasa con la hipertensión, que en el capítulo 3 deja de ser significativa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multicolinealidad: factor de inflación de la varianza (VIF) con la codificación del modelo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.outliers_influence</span><span class="w"> </span><span class="kn">import</span> <span class="n">variance_inflation_factor</span>
+<span class="n">completos</span> <span class="o">=</span> <span class="n">TRAIN</span><span class="p">[</span><span class="n">PREDICTORAS</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">completos</span><span class="p">[</span><span class="n">PREDICTORAS_CAT</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">PREDICTORAS_CAT</span><span class="p">:</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="s2">"categorias"</span><span class="p">][</span><span class="n">v</span><span class="p">])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">]</span> <span class="o">=</span> <span class="n">completos</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">];</span> <span class="n">X</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"const"</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">vif</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">variance_inflation_factor</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vif</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">());</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"VIF máximo:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vif</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"| columnas con VIF &gt; 5:"</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">vif</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>educacion_Técnico o universidad incompleta    3.37
+educacion_Pregrado                            3.27
+educacion_Secundaria o GED                    3.15
+educacion_Posgrado                            2.68
+edad                                          1.58
+depresion_dx_Sí                               1.57
+VIF máximo: 3.37 | columnas con VIF &gt; 5: 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+/usr/local/lib/python3.13/dist-packages/statsmodels/stats/outliers_influence.py:235: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r_sq = OLS(x_i, x_noti).fit().rsquared
+</pre></div>
+</div>
+</div>
+</div>
+<p>El VIF más alto es 3,4, en las categorías de escolaridad, que son mutuamente excluyentes por construcción, y ninguna columna supera 5. No hay multicolinealidad
+problemática, así que se pueden conservar las dos variables de depresión y los coeficientes del modelo se interpretan sin cautelas especiales por este motivo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ¿Los registros incompletos se parecen a los completos? ¿De qué depende el faltante?</span>
+<span class="n">inc</span> <span class="o">=</span> <span class="n">TRAIN</span><span class="p">[</span><span class="n">PREDICTORAS</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"completos"</span><span class="p">:</span> <span class="p">[</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">inc</span><span class="p">,</span> <span class="n">OBJETIVO</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">TRAIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">inc</span><span class="p">,</span> <span class="s2">"edad"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="p">(</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">inc</span><span class="p">,</span> <span class="s2">"sexo"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Mujer"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span>
+                     <span class="s2">"incompletos"</span><span class="p">:</span> <span class="p">[</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">inc</span><span class="p">,</span> <span class="n">OBJETIVO</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">TRAIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">inc</span><span class="p">,</span> <span class="s2">"edad"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="p">(</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">inc</span><span class="p">,</span> <span class="s2">"sexo"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Mujer"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()]},</span>
+                    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"prevalencia de dificultad"</span><span class="p">,</span> <span class="s2">"edad mediana"</span><span class="p">,</span> <span class="s2">"proporción de mujeres"</span><span class="p">])</span>
+<span class="n">ver</span><span class="p">(</span><span class="n">comp</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}),</span> <span class="p">{</span><span class="s2">"completos"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.3f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"incompletos"</span><span class="p">:</span> <span class="s2">"</span><span class="si">{:.3f}</span><span class="s2">"</span><span class="p">})</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">TRAIN</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">edad10</span><span class="o">=</span><span class="n">TRAIN</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">mujer</span><span class="o">=</span><span class="p">(</span><span class="n">TRAIN</span><span class="p">[</span><span class="s2">"sexo"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Mujer"</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">f_imc</span><span class="o">=</span><span class="n">TRAIN</span><span class="p">[</span><span class="s2">"imc_categoria"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"edad"</span><span class="p">,</span> <span class="s2">"mujer"</span><span class="p">])</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="s2">"f_imc ~ edad10 + mujer + dificultad_cognitiva + C(anio)"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_1470b_row0_col0, #T_1470b_row0_col1, #T_1470b_row0_col2, #T_1470b_row1_col0, #T_1470b_row1_col1, #T_1470b_row1_col2, #T_1470b_row2_col0, #T_1470b_row2_col1, #T_1470b_row2_col2 {
+  text-align: left;
+}
+</style>
+<table id="T_1470b">
+  <thead>
+    <tr>
+      <th id="T_1470b_level0_col0" class="col_heading level0 col0" ></th>
+      <th id="T_1470b_level0_col1" class="col_heading level0 col1" >completos</th>
+      <th id="T_1470b_level0_col2" class="col_heading level0 col2" >incompletos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_1470b_row0_col0" class="data row0 col0" >prevalencia de dificultad</td>
+      <td id="T_1470b_row0_col1" class="data row0 col1" >0.207</td>
+      <td id="T_1470b_row0_col2" class="data row0 col2" >0.197</td>
+    </tr>
+    <tr>
+      <td id="T_1470b_row1_col0" class="data row1 col0" >edad mediana</td>
+      <td id="T_1470b_row1_col1" class="data row1 col1" >54.000</td>
+      <td id="T_1470b_row1_col2" class="data row1 col2" >55.000</td>
+    </tr>
+    <tr>
+      <td id="T_1470b_row2_col0" class="data row2 col0" >proporción de mujeres</td>
+      <td id="T_1470b_row2_col1" class="data row2 col1" >0.540</td>
+      <td id="T_1470b_row2_col2" class="data row2 col2" >0.630</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept               0.01
+C(anio)[T.2023]         0.96
+edad10                  1.04
+mujer                   4.39
+dificultad_cognitiva    0.71
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los registros incompletos son casi iguales a los completos en la variable objetivo (19,7 % frente a 20,7 %, V de Cramér de 0,003) y en la edad, pero
+no en el sexo: el 63 % de los registros incompletos son mujeres, frente al 54 % de los completos. Modelar la probabilidad de que falte la categoría de IMC
+da un odds ratio de 4,4 para las mujeres, lo que confirma que el faltante no es completamente aleatorio. Se clasifica como MAR, dependiente de variables
+observadas, con un posible componente MNAR para el peso. En la práctica esto se traduce en una imputación sencilla (la moda dentro del pipeline) más un
+indicador de faltante para las tres variables con más del 2 %: frecuencia de depresión, tabaquismo y categoría de IMC.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Duplicados, perfiles repetidos y valores atípicos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Hogares repetidos dentro de un año:"</span><span class="p">,</span> <span class="n">TRAIN</span><span class="o">.</span><span class="n">duplicated</span><span class="p">([</span><span class="s2">"anio"</span><span class="p">,</span> <span class="s2">"id_hogar"</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Filas con el mismo perfil de predictoras que otra: </span><span class="si">{</span><span class="n">TRAIN</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">PREDICTORAS</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">TRAIN</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">PREDICTORAS</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">OBJETIVO</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"size"</span><span class="p">,</span> <span class="s2">"mean"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Perfiles repetidos con ambas clases:"</span><span class="p">,</span> <span class="nb">int</span><span class="p">(((</span><span class="n">g</span><span class="p">[</span><span class="s1">'size'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">g</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">TRAIN</span><span class="p">[</span><span class="s2">"imc"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">();</span> <span class="n">q1</span><span class="p">,</span> <span class="n">q3</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.75</span><span class="p">]);</span> <span class="n">lim</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"IMC: </span><span class="si">{</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lim</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> por encima de </span><span class="si">{</span><span class="n">lim</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m² (valores plausibles de obesidad severa)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hogares repetidos dentro de un año: 0
+Filas con el mismo perfil de predictoras que otra: 16.3%
+Perfiles repetidos con ambas clases: 879
+IMC: 1.55% por encima de 42.2 kg/m² (valores plausibles de obesidad severa)
+</pre></div>
+</div>
+</div>
+</div>
+<p>No hay hogares repetidos ni filas idénticas, pero el 16,3 % de los adultos comparte con otro exactamente la misma combinación de predictoras. Es esperable con trece
+variables categóricas de pocos niveles. Además, 879 de esos perfiles repetidos incluyen personas de ambas clases: con estas variables hay adultos
+indistinguibles entre sí aunque uno reporte dificultad y el otro no, y esto impone un techo al desempeño alcanzable. Tampoco eliminamos valores atípicos. El 1,6 %
+del IMC por encima de 42 kg/m² corresponde a obesidad severa, plausible, y un análisis multivariado con Isolation Forest en el Entregable 1 mostró que el 1 % más atípico
+tiene más ACV, más pérdida visual y una prevalencia de dificultad del 76 %: son las personas con más carga de enfermedad, justamente las más relevantes para la pregunta.
+Retirarlas sesgaría el modelo hacia la población más sana.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_contexto.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">1. Contexto del problema</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_modelos.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">3. Modelos base</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-objetivo">2.1 Variable objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edad">2.2 Edad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factores-de-riesgo">2.3 Factores de riesgo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-acv-como-exposicion-de-interes">2.4 El ACV como exposición de interés</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaciones-entre-variables-y-estructura-de-los-datos">2.5 Relaciones entre variables y estructura de los datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calidad-de-los-datos-y-auditoria-de-fuga">2.6 Calidad de los datos y auditoría de fuga</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detalles-que-el-dashboard-no-muestra">2.7 Detalles que el dashboard no muestra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-estadisticas-detras-de-las-graficas">Pruebas estadísticas detrás de las gráficas</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Santiago Díaz, Gina Huguet y Leiry Mares, Maestría en Ingeniería Biomédica, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
